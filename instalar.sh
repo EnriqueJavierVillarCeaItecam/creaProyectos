@@ -15,5 +15,4 @@ fi
 
 cp iniciar /c/Program\ Files/Git/mingw64/bin/iniciar
 cp -r proyectos/ /proyectos
-
-
+echo 'export PATH=$PATH:~/AppData/Local/Packages/PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0/LocalCache/local-packages/Python311/Scripts/' >> /c/Program\ Files/Git/etc/bash.bashrc

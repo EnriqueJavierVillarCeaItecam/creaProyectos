@@ -163,7 +163,6 @@ echo -e "${AZUL}- ${AMARILLO}API${NC} ACABADO ⚙"
 api(){
 if ! command -v uv &>/dev/null; then
     pip install uv
-  echo 'export PATH=$PATH:~/AppData/Local/Packages/PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0/LocalCache/local-packages/Python311/Scripts/' >> /c/Program\ Files/Git/etc/bash.bashrc
 fi
     
 uv -v init $nombre -p 3.11.9
