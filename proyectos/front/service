@@ -1,0 +1,11 @@
+  frontend:
+    build:
+      context: ./frontend
+    container_name: SUPER-sistema_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
