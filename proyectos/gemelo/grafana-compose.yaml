@@ -1,0 +1,10 @@
+
+  grafana:
+    container_name: grafana_SUPER
+    image: "grafana/grafana:11.2.0"
+    volumes:
+     - "${PWD:-.}/data/grafana-storage:/var/lib/grafana"
+     - "./grafana/grafana.ini:/etc/grafana/grafana.ini"
+    ports:
+     - "3001:3000"
+    user: root

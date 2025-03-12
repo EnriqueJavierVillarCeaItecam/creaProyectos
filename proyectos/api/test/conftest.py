@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 from bbdd.database import Base, SQLALCHEMY_DATABASE_URL
 
-BASE_URL = "http://localhost:8001"
+BASE_URL = "http://localhost:8000"
 
 if platform.startswith('win'):
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())

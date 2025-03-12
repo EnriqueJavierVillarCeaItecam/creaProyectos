@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 # URL de la base de datos (leer de variables de entorno)
 SQLALCHEMY_DATABASE_URL = getenv('DATABASE_URL',
-                                 'postgresql+asyncpg://postgres:password@127.0.0.1:5432/proyectosdb')
+                                 'postgresql+asyncpg://postgres:password@127.0.0.1:5432/db')
 
 engine = create_async_engine(SQLALCHEMY_DATABASE_URL, echo =  True)
 session_local = sessionmaker(engine, expire_on_commit = False, class_ = AsyncSession)

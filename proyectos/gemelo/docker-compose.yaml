@@ -1,0 +1,29 @@
+volumes:
+  telegraf_data:
+    driver: local
+
+services:
+
+  influxdb:
+    container_name: influxdb_SUPER
+    image: "influxdb:VERSION"
+    ports:
+     - "8086:8086"
+    restart: unless-stopped 
+    volumes:
+     - "${PWD:-.}/data/influxdb-storage:/var/lib/influxdb" 
+    environment:
+     - INFLUXDB_HTTP_LOG_ENABLED=false 
+
+  telegraf:
+    container_name: telegraf_SUPER
+    build: 
+      context: telegraf
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - influxdb
+    volumes:
+     - "${PWD:-.}/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf"
+
+

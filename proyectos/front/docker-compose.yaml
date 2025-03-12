@@ -2,12 +2,13 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ./sistema
     container_name: SUPER-sistema_frontend
     ports:
-      - "3000:3000"
+      - "3000:5173"
     volumes:
-      - ./frontend:/app
+      - ./sistema:/app
+      - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
 

@@ -1,0 +1,17 @@
+# Usa la imagen oficial de Telegraf como base
+FROM telegraf:latest
+
+RUN apt-get update && apt-get install -y git python3-pip python3-venv -y && apt-get clean
+# Copia la configuración de Telegraf
+COPY telegraf.conf /etc/telegraf/telegraf.conf
+COPY lector_plc /etc/telegraf/lector_plc
+RUN python3 -m venv /venv
+
+RUN /venv/bin/pip install --upgrade pip
+RUN /venv/bin/pip install -r /etc/telegraf/lector_plc/requirements.txt
+ENV PATH="/venv/bin:$PATH"
+
+EXPOSE 9273
+
+ENTRYPOINT ["telegraf"]
+CMD ["--config", "/etc/telegraf/telegraf.conf"]
