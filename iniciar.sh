@@ -559,7 +559,11 @@ sed -i "s/SUPER/$(basename $(pwd))/g" Makefile &
   done) &
 aplicarEntidades $nombre
 dependencias $nombre &
-mv $nombre/.git .
+if [[ $(ls -a | grep .git | wc -l) -eq 0 ]];then
+  mv $nombre/.git . &
+else
+  rm $nombre/.git &
+fi
 }
 progreso
 seleccionarProyectos 
