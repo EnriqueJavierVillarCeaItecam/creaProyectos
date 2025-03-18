@@ -9,6 +9,23 @@ plc=1
 nombreFront="frontend"
 repositorio=$1
 
+instalarScoop(){
+  powershell "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
+  powershell "Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression"
+}
+
+
+instalarZenity (){
+  if ! command -v scoop &>/dev/null; then
+    instalarScoop
+  fi
+  (scoop install https://ncruces.github.io/scoop/zenity.json
+  powershell "Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope CurrentUser") &
+}
+if ! command -v zenity &>/dev/null; then
+  instalarZenity
+fi
+
 
 
 
